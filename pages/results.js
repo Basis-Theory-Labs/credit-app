@@ -66,35 +66,57 @@ export default function Home() {
         </div>
 
         <div className={styles.snippet}>
-          <h2>KYC Check</h2>
-          {backgroundCheckToken && (
+          <h2>
+            KYC Check 
+            {backgroundCheckToken && <span className={styles.checkmark}></span>}
+          </h2>
+
+          {backgroundCheckToken && !createAccountToken && (
             <SyntaxHighlighter language="json">
               {JSON.stringify(backgroundCheckToken, undefined, "\t")}
             </SyntaxHighlighter>
           )}
 
-          <button onClick={backgroundCheck}>Perform KYC Check</button>
+          {!backgroundCheckToken &&
+            <button onClick={backgroundCheck}>Perform KYC Check</button>
+          }
         </div>
+        
+        {backgroundCheckToken && 
+          <div className={styles.snippet}>
+            <h2>
+              Create Bank Account
+              {createAccountToken && <span className={styles.checkmark}></span>}
+            </h2>
 
-        <div className={styles.snippet}>
-          <h2>Create Bank Account</h2>
-          {createAccountToken && (
-            <SyntaxHighlighter language="json">
-              {JSON.stringify(createAccountToken, undefined, "\t")}
-            </SyntaxHighlighter>
-          )}
-          <button onClick={createAccount}>Create</button>
-        </div>
+            {createAccountToken && !chargeAccountToken && (
+              <SyntaxHighlighter language="json">
+                {JSON.stringify(createAccountToken, undefined, "\t")}
+              </SyntaxHighlighter>
+            )}
+
+            {!createAccountToken &&
+              <button onClick={createAccount}>Create</button>
+            }
+          </div>
+        }
 
         {createAccountToken && 
           <div className={styles.snippet}>
-            <h2>Pay for Policy</h2>
+            <h2>
+              Onboard Funds
+              {chargeAccountToken && <span className={styles.checkmark}></span>}
+            </h2>
+
             {chargeAccountToken && (
               <SyntaxHighlighter language="json">
                 {JSON.stringify(chargeAccountToken, undefined, "\t")}
               </SyntaxHighlighter>
             )}
-            <button onClick={chargeAccount}>Pay Now</button>
+
+            {!chargeAccountToken &&
+              <button onClick={chargeAccount}>Pay Now</button>
+            }
           </div>
         }
 

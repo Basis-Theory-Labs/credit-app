@@ -7,15 +7,15 @@ export default async function handler(req, res) {
     .post(
       "https://api.basistheory.com/proxy",
       {
-        name_first: `{{${userToken} | $.first_name}}`,
-        name_last: `{{${userToken} | $.last_name}}`,
-        email_address: `{{${userToken} | $.email}}`,
-        document_ssn: `{{${ssnToken}}}`,
-        address_line_1: '111 Test St',
-        address_city: 'San Francisco',
-        address_state: 'CA',
-        address_postal_code: '94941',
-        phone_number: '555-123-4567'
+        name_first: `{{ ${userToken} | $.first_name }}`,
+        name_last: `{{ ${userToken} | $.last_name }}`,
+        email_address: `{{ ${userToken} | $.email }}`,
+        phone_number: `{{ ${userToken} | $.phone }}`,
+        document_ssn: `{{ ${ssnToken} }}`,
+        address_line_1: `{{ ${userToken} | $.address.street }}`,
+        address_city: `{{ ${userToken} | $.address.city }}`,
+        address_state: `{{ ${userToken} | $.address.state }}`,
+        address_postal_code: `{{ ${userToken} | $.address.postal_code }}`, 
       },
       {
         headers: {
@@ -28,6 +28,10 @@ export default async function handler(req, res) {
       }
     )
     .then(async ({ data }) => {
+      console.log(data)
       res.status(200).json(data.summary);
+    })
+    .catch((err) => {
+      console.log(JSON.stringify(err));
     });
 }

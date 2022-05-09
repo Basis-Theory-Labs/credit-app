@@ -38,6 +38,9 @@ export default function Home() {
       ssn: {
         type: 'social_security_number',
         data: bt.getElement("ssn"),
+        metadata: {
+          customer_type: "vip"
+        }
       },
       bank: {
         type: 'bank',
@@ -105,7 +108,9 @@ export default function Home() {
                   />
                 </div>
               </div>
+            </div>
 
+            <div className={styles.fieldColumns}>
               <div className="field-wrapper">
                 <span className="field-title">
                   City
@@ -130,6 +135,19 @@ export default function Home() {
                   />
                 </div>
               </div>
+
+              <div className="field-wrapper">
+                <span className="field-title">
+                  Postal Code
+                </span>
+                <div className="row-input">
+                  <TextElement 
+                    id="postal_code"
+                    placeholder="Postal code"
+                    mask={[/\d/, /\d/, /\d/, /\d/, /\d/]}
+                  />
+                </div>
+              </div>
             </div>
 
             <div className={styles.fieldColumns}>
@@ -151,7 +169,7 @@ export default function Home() {
                 </span>
                 <div className="row-input">
                   <TextElement 
-                    id="phone"
+                  f  id="phone"
                     placeholder="555-123-4567"
                     mask={[/\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
                     transform={/[-]/}

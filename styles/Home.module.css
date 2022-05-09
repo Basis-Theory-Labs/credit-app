@@ -48,3 +48,35 @@
   box-shadow: 0 0.5rem 1rem 0 rgba(33, 33, 36, 0.2);
   color: rgba(255, 255, 255, 1);
 }
+
+.checkmark {
+  display:inline-block;
+  width: 22px;
+  height:22px;
+  background: green;
+  border-radius:50%;
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+  margin-left: 10px;
+}
+
+.checkmark:before{
+  content:"";
+  position: absolute;
+  width:3px;
+  height:9px;
+  background-color:#fff;
+  left:11px;
+  top:6px;
+}
+
+.checkmark:after{
+  content:"";
+  position: absolute;
+  width:3px;
+  height:3px;
+  background-color:#fff;
+  left:8px;
+  top:12px;
+}
