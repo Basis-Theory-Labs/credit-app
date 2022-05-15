@@ -47,7 +47,6 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    console.log('HERE!');
     const checkout = async () => {
       await verifyIdentity();
       const createdAccount = await createAccount();
