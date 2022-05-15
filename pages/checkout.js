@@ -17,52 +17,47 @@ export default function Home() {
   const steps = ['Verify Identity', 'Create Bank Account', 'Transfer Funds'];
 
   const [activeStep, setActiveStep] = useState(0);
-  const [verifyIdentityToken, setVerifyIdentityToken] = useState(null);
-  const [createAccountToken, setCreateAccountToken] = useState(null);
 
   const verifyIdentity = useCallback(async () => {
     const { data } = await axios
       .post("/api/verify-identity", { userToken, ssnToken });
 
-      setVerifyIdentityToken(data);
     setActiveStep(1);
-  }, [ssnToken, userToken]);
 
-  useEffect(() => {
-    verifyIdentity()
-    .catch(console.error);
-  }, [verifyIdentity]);
+    return data;
+  }, [ssnToken, userToken]);
 
   const createAccount = useCallback(async () => {
     const { data } = await axios
       .post("/api/create-account", { bankToken, userToken });
 
-    setCreateAccountToken(data);
     setActiveStep(2);
-  }, [verifyIdentityToken]);
 
-  useEffect(() => {
-    createAccount()
-    .catch(console.error);
-  }, [createAccount]);
+    return data;
+  }, [bankToken, userToken]);
 
-  const chargeAccount = useCallback(async () => {
+  const chargeAccount = useCallback(async (createdAccountToken) => {
     await axios
       .post("/api/charge-account", { 
-        bankAccountId: createAccountToken.id, 
-        customerId: createAccountToken.customer, 
+        bankAccountId: createdAccountToken.id,
+        customerId: createdAccountToken.customer,
       });
 
     setActiveStep(3);
-  }, [createAccountToken]);
+  }, []);
 
   useEffect(() => {
-    chargeAccount()
-    .catch(console.error);
-  }, [chargeAccount]);
+    const checkout = async () => {
+      await verifyIdentity();
+      const createdAccount = await createAccount();
+      await chargeAccount(createdAccount);
+    };
+
+    checkout();
+  }, []);
 
   const seeHowItWorks = async () => {
-    router.push(`/how-we-built-it?userToken=${userToken}&bankToken=${bankToken}&ssnToken=${ssnToken}`);
+    await router.push(`/how-we-built-it?userToken=${userToken}&bankToken=${bankToken}&ssnToken=${ssnToken}`);
   }
 
   return (

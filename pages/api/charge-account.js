@@ -11,5 +11,5 @@ export default async function handler(req, res) {
     description: 'Insurance Policy',
   });
 
-  return res.status(200).json(charge);
+  res.status(200).json(charge);
 }

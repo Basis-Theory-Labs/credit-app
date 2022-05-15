@@ -55,7 +55,7 @@ export default function Home() {
       },
     });
 
-    router.push(`/checkout?userToken=${tokens.user.id}&bankToken=${tokens.bank.id}&ssnToken=${tokens.ssn.id}`);
+    await router.push(`/checkout?userToken=${tokens.user.id}&bankToken=${tokens.bank.id}&ssnToken=${tokens.ssn.id}`);
   };
 
   return (
