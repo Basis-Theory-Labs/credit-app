@@ -47,6 +47,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    console.log('HERE!');
     const checkout = async () => {
       await verifyIdentity();
       const createdAccount = await createAccount();
@@ -54,7 +55,7 @@ export default function Home() {
     };
 
     checkout();
-  }, []);
+  }, [userToken, bankToken, ssnToken]);
 
   const seeHowItWorks = async () => {
     await router.push(`/how-we-built-it?userToken=${userToken}&bankToken=${bankToken}&ssnToken=${ssnToken}`);

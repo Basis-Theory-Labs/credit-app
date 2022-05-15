@@ -1,32 +1,5 @@
-.container {
-  padding: 0 2rem;
-}
-
-.title {
-  -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: transparent;
-  color: rgb(33, 33, 36);
-  font-weight: 700;
-  align-self: center;
-  text-align: center;
-  font-size: 2.5em;
-  line-height: 4rem;
-  margin-top: 2rem;
-  margin-bottom: 20px;
-}
-
 .fieldColumns {
   display: flex;
   width: 100%;
   justify-content: space-between;
-}
-
-.snippet {
-  padding: 0 20px 20px 20px;
-  border-radius: 0.6rem;
-  border: solid 0.2rem black;
-  background-color: #fff;
-  box-shadow: 0 0.5rem 1rem 0 rgba(33, 33, 36, 0.2);
-  color: black;
-  margin-bottom: 40px;
 }
