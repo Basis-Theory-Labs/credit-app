@@ -1,4 +1,8 @@
 import Head from 'next/head'
+import Container from "@mui/material/Container";
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import styles from '../styles/Home.module.css'
 import { useRouter } from "next/router";
 import {
@@ -51,20 +55,19 @@ export default function Home() {
       },
     });
 
-    router.push(`/results?userToken=${tokens.user.id}&bankToken=${tokens.bank.id}&ssnToken=${tokens.ssn.id}`);
+    router.push(`/checkout?userToken=${tokens.user.id}&bankToken=${tokens.bank.id}&ssnToken=${tokens.ssn.id}`);
   };
 
   return (
-    <div className={styles.container}>
+    <Container maxWidth="md">
       <Head>
         <title>Credit App</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
+      <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+        <Typography component="h1" variant="h4" align="center">
           Create your account
-        </h1>
+        </Typography>
 
         <div id="form">
           <BasisTheoryProvider bt={bt}>
@@ -220,13 +223,9 @@ export default function Home() {
             </div>
           </BasisTheoryProvider>
 
-          <div>
-            <button type="submit" onClick={submit} disabled={!bt}>
-              Submit
-            </button>
-          </div>
+          <Button variant="contained" onClick={submit} disabled={!bt}>Submit</Button>
         </div>
-      </main>
-    </div>
+      </Paper>
+    </Container>
   )
 }
