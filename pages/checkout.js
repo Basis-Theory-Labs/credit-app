@@ -10,51 +10,51 @@ import axios from "axios";
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
 
+const steps = ['Verify Identity', 'Create Bank Account', 'Transfer Funds'];
+
 export default function Home() {
   const router = useRouter();
-  const { userToken, bankToken, ssnToken } = router.query;
-
-  const steps = ['Verify Identity', 'Create Bank Account', 'Transfer Funds'];
-
   const [activeStep, setActiveStep] = useState(0);
 
-  const verifyIdentity = useCallback(async () => {
+  const verifyIdentity = async (userToken, ssnToken) => {
     const { data } = await axios
       .post("/api/verify-identity", { userToken, ssnToken });
 
     setActiveStep(1);
 
     return data;
-  }, [ssnToken, userToken]);
+  };
 
-  const createAccount = useCallback(async () => {
+  const createAccount = async (bankToken, userToken) => {
     const { data } = await axios
       .post("/api/create-account", { bankToken, userToken });
 
     setActiveStep(2);
 
     return data;
-  }, [bankToken, userToken]);
+  };
 
-  const chargeAccount = useCallback(async (createdAccountToken) => {
+  const chargeAccount = async (createdAccountToken) => {
     await axios
-      .post("/api/charge-account", { 
+      .post("/api/charge-account", {
         bankAccountId: createdAccountToken.id,
         customerId: createdAccountToken.customer,
       });
 
     setActiveStep(3);
-  }, []);
+  };
+
+  const checkout = async ({ userToken, bankToken, ssnToken }) => {
+    await verifyIdentity(userToken, ssnToken);
+    const createdAccount = await createAccount(bankToken, userToken);
+    await chargeAccount(createdAccount);
+  };
 
   useEffect(() => {
-    const checkout = async () => {
-      await verifyIdentity();
-      const createdAccount = await createAccount();
-      await chargeAccount(createdAccount);
-    };
-
-    checkout();
-  }, [userToken, bankToken, ssnToken]);
+    if (router.query.userToken) {
+      checkout(router.query);
+    }
+  }, [router.query])
 
   const seeHowItWorks = async () => {
     await router.push(`/how-we-built-it?userToken=${userToken}&bankToken=${bankToken}&ssnToken=${ssnToken}`);
