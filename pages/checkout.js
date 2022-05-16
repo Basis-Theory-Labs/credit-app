@@ -46,15 +46,17 @@ export default function Home() {
     setActiveStep(3);
   }, []);
 
-  useEffect(() => {
-    const checkout = async () => {
-      await verifyIdentity();
-      const createdAccount = await createAccount();
-      await chargeAccount(createdAccount);
-    };
+  const checkout = useCallback(async ({ userToken, bankToken, ssnToken }) => {
+    await verifyIdentity(userToken, ssnToken);
+    const createdAccount = await createAccount(bankToken, userToken);
+    await chargeAccount(createdAccount);
+  }, [chargeAccount, createAccount, verifyIdentity]);
 
-    checkout();
-  }, [userToken, bankToken, ssnToken]);
+  useEffect(() => {
+    if (router.query.userToken) {
+      checkout(router.query);
+    }
+  }, [router.query])
 
   const seeHowItWorks = async () => {
     await router.push(`/how-we-built-it?userToken=${userToken}&bankToken=${bankToken}&ssnToken=${ssnToken}`);

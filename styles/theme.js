@@ -3,8 +3,12 @@ import { deepPurple, amber } from "@mui/material/colors";
 
 let theme = createTheme({
   palette: {
-    primary: deepPurple,
-    secondary: amber,
+    primary: {
+      main: '#009FA9',
+    },
+    secondary: {
+      main: 'rgb(19, 23, 42)',
+    }
   },
 });
 

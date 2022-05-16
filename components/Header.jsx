@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <>
-      <AppBar position="fixed">
+      <AppBar position="fixed" color="secondary">
         <Toolbar>
             <IconButton edge="start" aria-label="home" onClick={() => router.push("/")}>
               <AccountBalance sx={{ 
