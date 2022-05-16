@@ -7,7 +7,7 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import axios from "axios";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 export default function Home() {
@@ -18,25 +18,25 @@ export default function Home() {
 
   const [activeStep, setActiveStep] = useState(0);
 
-  const verifyIdentity = useCallback(async () => {
+  const verifyIdentity = async () => {
     const { data } = await axios
       .post("/api/verify-identity", { userToken, ssnToken });
 
     setActiveStep(1);
 
     return data;
-  }, [ssnToken, userToken]);
+  };
 
-  const createAccount = useCallback(async () => {
+  const createAccount = async () => {
     const { data } = await axios
       .post("/api/create-account", { bankToken, userToken });
 
     setActiveStep(2);
 
     return data;
-  }, [bankToken, userToken]);
+  };
 
-  const chargeAccount = useCallback(async (createdAccountToken) => {
+  const chargeAccount = async (createdAccountToken) => {
     await axios
       .post("/api/charge-account", { 
         bankAccountId: createdAccountToken.id,
@@ -44,13 +44,13 @@ export default function Home() {
       });
 
     setActiveStep(3);
-  }, []);
+  };
 
-  const checkout = useCallback(async ({ userToken, bankToken, ssnToken }) => {
+  const checkout = async ({ userToken, bankToken, ssnToken }) => {
     await verifyIdentity(userToken, ssnToken);
     const createdAccount = await createAccount(bankToken, userToken);
     await chargeAccount(createdAccount);
-  }, [chargeAccount, createAccount, verifyIdentity]);
+  };
 
   useEffect(() => {
     if (router.query.userToken) {
