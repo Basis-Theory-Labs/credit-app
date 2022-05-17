@@ -1,15 +1,25 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-export default async function handler(req, res) {
+export default async (req, res) => {
+  if (req.method !== 'POST') {
+    res.status(404).json({message: 'Endpoint not found'});
+
+    return;
+  }
+
   const { bankAccountId, customerId } = req.body;
 
-  const charge = await stripe.charges.create({
-    amount: 10000,
-    currency: 'usd',
-    source: bankAccountId,
-    customer: customerId,
-    description: 'Insurance Policy',
-  });
+  try {
+    const charge = await stripe.charges.create({
+      amount: 10000,
+      currency: 'usd',
+      source: bankAccountId,
+      customer: customerId,
+      description: 'Insurance Policy',
+    });
 
-  res.status(200).json(charge);
+    res.status(200).json(charge);
+  } catch (err) {
+    console.error(err);
+  }
 }
