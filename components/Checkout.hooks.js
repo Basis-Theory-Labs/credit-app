@@ -6,7 +6,7 @@ export const useCheckout = () => {
     const router = useRouter();
     const { userToken, bankToken, ssnToken } = router.query;
 
-    const steps = ['Verify Identity', 'Create Bank Account', 'Transfer Funds'];
+    const steps = ['Verify Identity', 'Connect Bank Account', 'Transfer Funds'];
 
     const [activeStep, setActiveStep] = useState(0);
 
@@ -19,9 +19,9 @@ export const useCheckout = () => {
         return data;
     };
 
-    const createAccount = async () => {
+    const connectAccount = async () => {
         const { data } = await axios
-            .post("/api/create-account", { bankToken, userToken });
+            .post("/api/connect-account", { bankToken, userToken });
 
         setActiveStep(2);
 
@@ -40,7 +40,7 @@ export const useCheckout = () => {
 
     const checkout = async ({ userToken, bankToken, ssnToken }) => {
         await verifyIdentity(userToken, ssnToken);
-        const createdAccount = await createAccount(bankToken, userToken);
+        const createdAccount = await connectAccount(bankToken, userToken);
         await chargeAccount(createdAccount);
     };
 

@@ -6,7 +6,8 @@ import {
   Stepper,
   Step,
   StepLabel,
-  Button
+  Button,
+  Box
 } from "@mui/material";
 import {useCheckout} from '@/components/Checkout.hooks';
 
@@ -34,7 +35,7 @@ export default function Checkout() {
 
         {activeStep === 3 && (
           <>
-            <Typography component="h3" variant="h5" align="center">
+            <Typography component="h3" variant="h5" align="center" sx={{ mt: 4 }}>
               🎉 Success!
             </Typography>
 
@@ -42,7 +43,9 @@ export default function Checkout() {
               $1,000 will be deposited in 2-4 business days
             </Typography>
 
-            <Button variant="outlined" onClick={seeHowItWorks}>See how it works</Button>
+            <Box sx={{ 'text-align': 'center' }}>
+              <Button size="large" variant="outlined" onClick={seeHowItWorks}>See how it works</Button>
+            </Box>
           </>
         )}
       </Paper>

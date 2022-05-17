@@ -14,7 +14,7 @@ export const useHowWeBuiltIt = () => {
 
     const [expanded, setExpanded] = useState('form');
     const [verifyIdentityToken, setVerifyIdentityToken] = useState(null);
-    const [createAccountToken, setCreateAccountToken] = useState(null);
+    const [connectAccountToken, setConnectAccountToken] = useState(null);
     const [chargeAccountToken, setChargeAccountToken] = useState(null);
 
 
@@ -30,19 +30,19 @@ export const useHowWeBuiltIt = () => {
             });
     };
 
-    const createAccount = () => {
+    const connectAccount = () => {
         axios
-            .post("/api/create-account", { bankToken, userToken })
+            .post("/api/connect-account", { bankToken, userToken })
             .then(({ data, ...rest }) => {
-                setCreateAccountToken(data);
+                setConnectAccountToken(data);
             });
     };
 
     const chargeAccount = () => {
         axios
             .post("/api/charge-account", {
-                bankAccountId: createAccountToken.id,
-                customerId: createAccountToken.customer,
+                bankAccountId: connectAccountToken.id,
+                customerId: connectAccountToken.customer,
             })
             .then(({ data, ...rest }) => {
                 setChargeAccountToken(data);
@@ -53,7 +53,7 @@ export const useHowWeBuiltIt = () => {
         bt,
         handleChange,
         verifyIdentity,
-        createAccount,
+        connectAccount,
         chargeAccount,
         userToken,
         bankToken,
@@ -61,6 +61,6 @@ export const useHowWeBuiltIt = () => {
         expanded,
         verifyIdentityToken,
         chargeAccountToken,
-        createAccountToken
+        connectAccountToken
     };
 }

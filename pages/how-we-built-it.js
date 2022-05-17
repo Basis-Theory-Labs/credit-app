@@ -21,7 +21,7 @@ export default function HowWeBuiltIt() {
     bt,
     handleChange,
     verifyIdentity,
-    createAccount,
+    connectAccount,
     chargeAccount,
     userToken,
     bankToken,
@@ -29,7 +29,7 @@ export default function HowWeBuiltIt() {
     expanded,
     verifyIdentityToken,
     chargeAccountToken,
-    createAccountToken
+    connectAccountToken
   } = useHowWeBuiltIt();
 
   return (
@@ -43,16 +43,18 @@ export default function HowWeBuiltIt() {
           Your Tokens
         </Typography>
 
-        <Typography component="h4" variant="h6" align="center" style={{ color: 'green' }}>
-          User: {userToken}
-        </Typography>
-        <Typography component="h4" variant="h6" align="center" style={{ color: 'red' }}>
-          SSN: {ssnToken}
-        </Typography>
-        <Typography component="h4" variant="h6" align="center" style={{ color: 'blue' }}>
-          Bank: {bankToken}
-        </Typography>
+        <Paper variant="outlined" className='token-paper' sx={{ color: '#00B68A' }}>
+          <span className='token-badge token-badge-green'>User</span> {userToken}
+        </Paper>
+        <Paper variant="outlined" className='token-paper' sx={{ color: '#F56C9D' }}>
+          <span className='token-badge token-badge-red'>SSN</span> {ssnToken}
+        </Paper>
+        <Paper variant="outlined" className='token-paper' sx={{ color: '#5383FF' }}>
+          <span className='token-badge token-badge-blue'>Bank</span> {bankToken}
+        </Paper>
+      </Paper>
 
+      <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
         <Accordion expanded={expanded === 'form'} onChange={handleChange('form')}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -71,7 +73,7 @@ export default function HowWeBuiltIt() {
                     <span className="field-title">
                       First Name
                     </span>
-                    <div className="row-input" style={{ border: '0.2rem solid green', padding: '0.5rem' }}>
+                    <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
                       <TextElement 
                         id="first_name"
                         placeholder="First name"
@@ -83,7 +85,7 @@ export default function HowWeBuiltIt() {
                     <span className="field-title">
                       Last Name
                     </span>
-                    <div className="row-input" style={{ border: '0.2rem solid green', padding: '0.5rem' }}>
+                    <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
                       <TextElement 
                         id="last_name"
                         placeholder="Last name"
@@ -97,7 +99,7 @@ export default function HowWeBuiltIt() {
                     <span className="field-title">
                       Street
                     </span>
-                    <div className="row-input" style={{ border: '0.2rem solid green', padding: '0.5rem' }}>
+                    <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
                       <TextElement 
                         id="street"
                         placeholder="Street"
@@ -111,7 +113,7 @@ export default function HowWeBuiltIt() {
                     <span className="field-title">
                       City
                     </span>
-                    <div className="row-input" style={{ border: '0.2rem solid green', padding: '0.5rem' }}>
+                    <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
                       <TextElement 
                         id="city"
                         placeholder="City"
@@ -123,7 +125,7 @@ export default function HowWeBuiltIt() {
                     <span className="field-title">
                       State
                     </span>
-                    <div className="row-input" style={{ border: '0.2rem solid green', padding: '0.5rem' }}>
+                    <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
                       <TextElement 
                         id="state"
                         placeholder="State abbrev"
@@ -136,7 +138,7 @@ export default function HowWeBuiltIt() {
                     <span className="field-title">
                       Postal Code
                     </span>
-                    <div className="row-input" style={{ border: '0.2rem solid green', padding: '0.5rem' }}>
+                    <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
                       <TextElement 
                         id="postal_code"
                         placeholder="Postal code"
@@ -151,7 +153,7 @@ export default function HowWeBuiltIt() {
                     <span className="field-title">
                       Email
                     </span>
-                    <div className="row-input" style={{ border: '0.2rem solid green', padding: '0.5rem' }}>
+                    <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
                       <TextElement 
                         id="email"
                         placeholder="Email"
@@ -163,7 +165,7 @@ export default function HowWeBuiltIt() {
                     <span className="field-title">
                       Phone
                     </span>
-                    <div className="row-input" style={{ border: '0.2rem solid green', padding: '0.5rem' }}>
+                    <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
                       <TextElement 
                       f  id="phone"
                         placeholder="555-123-4567"
@@ -177,7 +179,7 @@ export default function HowWeBuiltIt() {
                     <span className="field-title">
                       SSN
                     </span>
-                    <div className="row-input" style={{ border: '0.2rem solid red', padding: '0.5rem' }}>
+                    <div className="row-input" style={{ 'border-bottom': '0.1rem solid #F56C9D', padding: '0.5rem' }}>
                       <TextElement 
                         id="ssn"
                         placeholder="123-45-6789"
@@ -194,7 +196,7 @@ export default function HowWeBuiltIt() {
                     <span className="field-title">
                       Routing #
                     </span>
-                    <div className="row-input" style={{ border: '0.2rem solid blue', padding: '0.5rem' }}>
+                    <div className="row-input" style={{ 'border-bottom': '0.1rem solid #5383FF', padding: '0.5rem' }}>
                       <TextElement 
                         id="routing_number"
                         placeholder="Routing #" 
@@ -206,7 +208,7 @@ export default function HowWeBuiltIt() {
                     <span className="field-title">
                       Account #
                     </span>
-                    <div className="row-input" style={{ border: '0.2rem solid blue', padding: '0.5rem' }}>
+                    <div className="row-input" style={{ 'border-bottom': '0.1rem solid #5383FF', padding: '0.5rem' }}>
                       <TextElement 
                         id="account_number"
                         placeholder="Account #" 
@@ -240,7 +242,7 @@ export default function HowWeBuiltIt() {
               </SyntaxHighlighter>
             )}
 
-            <Button variant="contained" onClick={verifyIdentity}>Proxy to Alloy</Button>
+            <Button size="large"  variant="contained" onClick={verifyIdentity}>Proxy to Alloy</Button>
           </AccordionDetails>
         </Accordion>
 
@@ -259,13 +261,13 @@ export default function HowWeBuiltIt() {
               style={{ width: '100%'}}
             />
 
-            {createAccountToken && (
+            {connectAccountToken && (
               <SyntaxHighlighter language="json">
-                {JSON.stringify(createAccountToken, undefined, "\t")}
+                {JSON.stringify(connectAccountToken, undefined, "\t")}
               </SyntaxHighlighter>
             )}
 
-            <Button variant="contained" onClick={createAccount}>Run Stripe Reactor</Button>
+            <Button size="large"  variant="contained" onClick={connectAccount}>Run Stripe Reactor</Button>
           </AccordionDetails>
         </Accordion>
 
@@ -284,7 +286,7 @@ export default function HowWeBuiltIt() {
               </SyntaxHighlighter>
             )}
 
-            <Button variant="contained" onClick={chargeAccount}>Charge Bank Account</Button>
+            <Button size="large"  variant="contained" onClick={chargeAccount}>Charge Bank Account</Button>
           </AccordionDetails>
         </Accordion>
       </Paper>

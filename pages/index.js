@@ -178,7 +178,7 @@ export default function Home() {
             </div>
           </BasisTheoryProvider>
 
-          <Button variant="contained" onClick={submit} disabled={!bt}>Submit</Button>
+          <Button size="large" variant="contained" onClick={submit} disabled={!bt}>Submit</Button>
         </div>
       </Paper>
     </Container>

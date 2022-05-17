@@ -76,3 +76,45 @@ input::placeholder {
 .input-columns {
   display: flex;
 }
+
+.token-paper {
+  color: '#00B68A';
+  font-size: '14px';
+  font-weight: 600;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding: 16px;
+}
+
+.token-badge {
+  flex-direction: row;
+  align-items: center;
+  padding: 4px 10px;
+  gap: 8px;
+
+  width: 52px;
+  height: 25px;
+
+  /* Dark/Accent/700/Shade */
+
+  border-radius: 4px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin-right: 16px;
+}
+
+.token-badge-green {
+  background: rgba(0, 182, 138, 0.15);
+}
+
+.token-badge-red {
+  background: rgba(245, 108, 157, 0.15);
+}
+
+.token-badge-blue {
+  background: rgba(83, 131, 255, 0.15);
+}
