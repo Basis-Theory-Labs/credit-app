@@ -4,7 +4,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import styles from '../styles/Home.module.css'
-import { useHome } from '@/components/index.hooks';
+import { useHome } from '@/components/Index.hooks';
 import {
   TextElement,
   BasisTheoryProvider,
