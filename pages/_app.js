@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import Header from "@components/Header";
+import Header from "@/components/Header";
 
 import "../styles/globals.css";
 import theme from '../styles/theme';
