@@ -10,6 +10,17 @@ import {
   BasisTheoryProvider,
 } from "@basis-theory/basis-theory-react";
 
+const inputStyles = {
+  style: {
+    fonts: [
+      "https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    ],
+    base: {
+      fontFamily: "'Inter'",
+    },
+  }
+};
+
 export default function Home() {
   const { bt, submit } = useHome();
 
@@ -26,7 +37,7 @@ export default function Home() {
 
         <div id="form">
           <BasisTheoryProvider bt={bt}>
-          <h3>Contact Information</h3>
+            <h3>Contact Information</h3>
 
             <div className={styles.fieldColumns}>
               <div className="field-wrapper">
@@ -34,7 +45,7 @@ export default function Home() {
                   First Name
                 </span>
                 <div className="row-input">
-                  <TextElement 
+                  <TextElement
                     id="first_name"
                     placeholder="First name"
                   />
@@ -46,7 +57,7 @@ export default function Home() {
                   Last Name
                 </span>
                 <div className="row-input">
-                  <TextElement 
+                  <TextElement
                     id="last_name"
                     placeholder="Last name"
                   />
@@ -60,7 +71,7 @@ export default function Home() {
                   Street
                 </span>
                 <div className="row-input">
-                  <TextElement 
+                  <TextElement
                     id="street"
                     placeholder="Street"
                   />
@@ -74,7 +85,7 @@ export default function Home() {
                   City
                 </span>
                 <div className="row-input">
-                  <TextElement 
+                  <TextElement
                     id="city"
                     placeholder="City"
                   />
@@ -86,7 +97,7 @@ export default function Home() {
                   State
                 </span>
                 <div className="row-input">
-                  <TextElement 
+                  <TextElement
                     id="state"
                     placeholder="State abbrev"
                     mask={[/[A-Za-z]/, /[A-Za-z]/]}
@@ -99,7 +110,7 @@ export default function Home() {
                   Postal Code
                 </span>
                 <div className="row-input">
-                  <TextElement 
+                  <TextElement
                     id="postal_code"
                     placeholder="Postal code"
                     mask={[/\d/, /\d/, /\d/, /\d/, /\d/]}
@@ -114,7 +125,7 @@ export default function Home() {
                   Email
                 </span>
                 <div className="row-input">
-                  <TextElement 
+                  <TextElement
                     id="email"
                     placeholder="Email"
                   />
@@ -126,8 +137,8 @@ export default function Home() {
                   Phone
                 </span>
                 <div className="row-input">
-                  <TextElement 
-                  f  id="phone"
+                  <TextElement
+                    f id="phone"
                     placeholder="555-123-4567"
                     mask={[/\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
                     transform={/[-]/}
@@ -140,7 +151,7 @@ export default function Home() {
                   SSN
                 </span>
                 <div className="row-input">
-                  <TextElement 
+                  <TextElement
                     id="ssn"
                     placeholder="123-45-6789"
                     mask={[/\d/, /\d/, /\d/, "-", /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
@@ -157,9 +168,9 @@ export default function Home() {
                   Routing #
                 </span>
                 <div className="row-input">
-                  <TextElement 
+                  <TextElement
                     id="routing_number"
-                    placeholder="Routing #" 
+                    placeholder="Routing #"
                   />
                 </div>
               </div>
@@ -169,9 +180,9 @@ export default function Home() {
                   Account #
                 </span>
                 <div className="row-input">
-                  <TextElement 
+                  <TextElement
                     id="account_number"
-                    placeholder="Account #" 
+                    placeholder="Account #"
                   />
                 </div>
               </div>

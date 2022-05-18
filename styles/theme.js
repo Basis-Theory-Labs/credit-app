@@ -1,7 +1,12 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
-import { deepPurple, amber } from "@mui/material/colors";
 
 let theme = createTheme({
+  typography: {
+    fontFamily: ['sans-serif', 'Inter'],
+    button: {
+      textTransform: 'none'
+    }
+  },
   palette: {
     primary: {
       main: '#009FA9',

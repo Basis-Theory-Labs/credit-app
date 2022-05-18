@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Accordion from '@mui/material/Accordion';
+import Grid from '@mui/material/Grid';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -12,7 +13,7 @@ import {
   TextElement,
   BasisTheoryProvider,
 } from "@basis-theory/basis-theory-react";
-import {useHowWeBuiltIt} from '@/components/HowWeBuiltIt.hooks';
+import { useHowWeBuiltIt } from '@/components/HowWeBuiltIt.hooks';
 
 import styles from '../styles/Home.module.css'
 
@@ -74,7 +75,7 @@ export default function HowWeBuiltIt() {
                       First Name
                     </span>
                     <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
-                      <TextElement 
+                      <TextElement
                         id="first_name"
                         placeholder="First name"
                       />
@@ -86,7 +87,7 @@ export default function HowWeBuiltIt() {
                       Last Name
                     </span>
                     <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
-                      <TextElement 
+                      <TextElement
                         id="last_name"
                         placeholder="Last name"
                       />
@@ -100,7 +101,7 @@ export default function HowWeBuiltIt() {
                       Street
                     </span>
                     <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
-                      <TextElement 
+                      <TextElement
                         id="street"
                         placeholder="Street"
                       />
@@ -114,7 +115,7 @@ export default function HowWeBuiltIt() {
                       City
                     </span>
                     <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
-                      <TextElement 
+                      <TextElement
                         id="city"
                         placeholder="City"
                       />
@@ -126,7 +127,7 @@ export default function HowWeBuiltIt() {
                       State
                     </span>
                     <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
-                      <TextElement 
+                      <TextElement
                         id="state"
                         placeholder="State abbrev"
                         mask={[/[A-Za-z]/, /[A-Za-z]/]}
@@ -139,7 +140,7 @@ export default function HowWeBuiltIt() {
                       Postal Code
                     </span>
                     <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
-                      <TextElement 
+                      <TextElement
                         id="postal_code"
                         placeholder="Postal code"
                         mask={[/\d/, /\d/, /\d/, /\d/, /\d/]}
@@ -154,7 +155,7 @@ export default function HowWeBuiltIt() {
                       Email
                     </span>
                     <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
-                      <TextElement 
+                      <TextElement
                         id="email"
                         placeholder="Email"
                       />
@@ -166,8 +167,8 @@ export default function HowWeBuiltIt() {
                       Phone
                     </span>
                     <div className="row-input" style={{ 'border-bottom': '0.1rem solid #00B68A', padding: '0.5rem' }}>
-                      <TextElement 
-                      f  id="phone"
+                      <TextElement
+                        f id="phone"
                         placeholder="555-123-4567"
                         mask={[/\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
                         transform={/[-]/}
@@ -180,7 +181,7 @@ export default function HowWeBuiltIt() {
                       SSN
                     </span>
                     <div className="row-input" style={{ 'border-bottom': '0.1rem solid #F56C9D', padding: '0.5rem' }}>
-                      <TextElement 
+                      <TextElement
                         id="ssn"
                         placeholder="123-45-6789"
                         mask={[/\d/, /\d/, /\d/, "-", /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
@@ -197,9 +198,9 @@ export default function HowWeBuiltIt() {
                       Routing #
                     </span>
                     <div className="row-input" style={{ 'border-bottom': '0.1rem solid #5383FF', padding: '0.5rem' }}>
-                      <TextElement 
+                      <TextElement
                         id="routing_number"
-                        placeholder="Routing #" 
+                        placeholder="Routing #"
                       />
                     </div>
                   </div>
@@ -209,9 +210,9 @@ export default function HowWeBuiltIt() {
                       Account #
                     </span>
                     <div className="row-input" style={{ 'border-bottom': '0.1rem solid #5383FF', padding: '0.5rem' }}>
-                      <TextElement 
+                      <TextElement
                         id="account_number"
-                        placeholder="Account #" 
+                        placeholder="Account #"
                       />
                     </div>
                   </div>
@@ -230,19 +231,35 @@ export default function HowWeBuiltIt() {
             <Typography>Proxy to Alloy</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <img
-              src="https://developers.basistheory.com/assets/images/what_is_the_proxy/outbound-proxy.png"
-              alt="Outbound Proxy"
-              style={{ width: '100%'}}
-            />
+            <Grid container
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Grid item xs={3}>
+                <Typography variant="h6" color="inherit">
+                  Basis Theory Proxy
+                </Typography>
+                <Typography color="inherit" sx={{ mb: 2 }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id feugiat lectus.
+                </Typography>
+
+                <Button size="large" variant="contained" onClick={verifyIdentity}>Proxy to Alloy</Button>
+              </Grid>
+              <Grid item xs={9}>
+                <img
+                  src="/proxy.png"
+                  alt="Outbound Proxy"
+                  style={{ width: '100%' }}
+                />
+              </Grid>
+            </Grid>
+
 
             {verifyIdentityToken && (
               <SyntaxHighlighter language="json">
                 {JSON.stringify(verifyIdentityToken, undefined, "\t")}
               </SyntaxHighlighter>
             )}
-
-            <Button size="large"  variant="contained" onClick={verifyIdentity}>Proxy to Alloy</Button>
           </AccordionDetails>
         </Accordion>
 
@@ -255,19 +272,34 @@ export default function HowWeBuiltIt() {
             <Typography>Run Stripe Reactor</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <img
-              src="https://developers.basistheory.com/assets/images/concepts/reactors_overview.png"
-              alt="Reactors"
-              style={{ width: '100%'}}
-            />
+            <Grid container
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Grid item xs={3}>
+                <Typography variant="h6" color="inherit">
+                  Basis Theory Reactor
+                </Typography>
+                <Typography color="inherit" sx={{ mb: 2 }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id feugiat lectus.
+                </Typography>
+
+                <Button size="large" variant="contained" onClick={connectAccount}>Run Stripe Reactor</Button>
+              </Grid>
+              <Grid item xs={9}>
+                <img
+                  src="/reactor.png"
+                  alt="Outbound Proxy"
+                  style={{ width: '100%' }}
+                />
+              </Grid>
+            </Grid>
 
             {connectAccountToken && (
               <SyntaxHighlighter language="json">
                 {JSON.stringify(connectAccountToken, undefined, "\t")}
               </SyntaxHighlighter>
             )}
-
-            <Button size="large"  variant="contained" onClick={connectAccount}>Run Stripe Reactor</Button>
           </AccordionDetails>
         </Accordion>
 
@@ -280,13 +312,34 @@ export default function HowWeBuiltIt() {
             <Typography>Send Directly to Processor</Typography>
           </AccordionSummary>
           <AccordionDetails>
+            <Grid container
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Grid item xs={3}>
+                <Typography variant="h6" color="inherit">
+                  Charge Bank Account
+                </Typography>
+                <Typography color="inherit" sx={{ mb: 2 }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id feugiat lectus.
+                </Typography>
+
+                <Button size="large" variant="contained" onClick={chargeAccount}>Charge Bank Account</Button>
+              </Grid>
+              <Grid item xs={9}>
+                <img
+                  src="/charge-stripe.png"
+                  alt="Outbound Proxy"
+                  style={{ width: '100%' }}
+                />
+              </Grid>
+            </Grid>
+
             {chargeAccountToken && (
               <SyntaxHighlighter language="json">
                 {JSON.stringify(chargeAccountToken, undefined, "\t")}
               </SyntaxHighlighter>
             )}
-
-            <Button size="large"  variant="contained" onClick={chargeAccount}>Charge Bank Account</Button>
           </AccordionDetails>
         </Accordion>
       </Paper>
