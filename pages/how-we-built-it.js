@@ -1,12 +1,14 @@
 import Head from 'next/head'
-import Container from "@mui/material/Container";
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Accordion from '@mui/material/Accordion';
-import Grid from '@mui/material/Grid';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
+import {
+  Container,
+  Paper,
+  Typography,
+  Button,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Grid
+} from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {
@@ -23,13 +25,13 @@ export default function HowWeBuiltIt() {
     handleChange,
     verifyIdentity,
     connectAccount,
-    chargeAccount,
+    transferFunds,
     userToken,
     bankToken,
     ssnToken,
     expanded,
     verifyIdentityToken,
-    chargeAccountToken,
+    transferFundsToken,
     connectAccountToken
   } = useHowWeBuiltIt();
 
@@ -62,7 +64,7 @@ export default function HowWeBuiltIt() {
             aria-controls="form-content"
             id="form-header"
           >
-            <Typography>Securely Collect Data</Typography>
+            <Typography>Basis Theory Elements</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <div id="form">
@@ -228,7 +230,7 @@ export default function HowWeBuiltIt() {
             aria-controls="proxy-content"
             id="proxy-header"
           >
-            <Typography>Proxy to Alloy</Typography>
+            <Typography>Basis Theory Proxy</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Grid container
@@ -236,13 +238,6 @@ export default function HowWeBuiltIt() {
               justifyContent="center"
             >
               <Grid item xs={3}>
-                <Typography variant="h6" color="inherit">
-                  Basis Theory Proxy
-                </Typography>
-                <Typography color="inherit" sx={{ mb: 2 }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id feugiat lectus.
-                </Typography>
-
                 <Button size="large" variant="contained" onClick={verifyIdentity}>Proxy to Alloy</Button>
               </Grid>
               <Grid item xs={9}>
@@ -269,7 +264,7 @@ export default function HowWeBuiltIt() {
             aria-controls="reactors-content"
             id="reactors-header"
           >
-            <Typography>Run Stripe Reactor</Typography>
+            <Typography>Basis Theory Reactor</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Grid container
@@ -277,13 +272,6 @@ export default function HowWeBuiltIt() {
               justifyContent="center"
             >
               <Grid item xs={3}>
-                <Typography variant="h6" color="inherit">
-                  Basis Theory Reactor
-                </Typography>
-                <Typography color="inherit" sx={{ mb: 2 }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id feugiat lectus.
-                </Typography>
-
                 <Button size="large" variant="contained" onClick={connectAccount}>Run Stripe Reactor</Button>
               </Grid>
               <Grid item xs={9}>
@@ -317,27 +305,20 @@ export default function HowWeBuiltIt() {
               justifyContent="center"
             >
               <Grid item xs={3}>
-                <Typography variant="h6" color="inherit">
-                  Charge Bank Account
-                </Typography>
-                <Typography color="inherit" sx={{ mb: 2 }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id feugiat lectus.
-                </Typography>
-
-                <Button size="large" variant="contained" onClick={chargeAccount}>Charge Bank Account</Button>
+                <Button size="large" variant="contained" onClick={transferFunds}>Transfer Funds</Button>
               </Grid>
               <Grid item xs={9}>
                 <img
                   src="/charge-stripe.png"
-                  alt="Outbound Proxy"
+                  alt="Stripe Reactor"
                   style={{ width: '100%' }}
                 />
               </Grid>
             </Grid>
 
-            {chargeAccountToken && (
+            {transferFundsToken && (
               <SyntaxHighlighter language="json">
-                {JSON.stringify(chargeAccountToken, undefined, "\t")}
+                {JSON.stringify(transferFundsToken, undefined, "\t")}
               </SyntaxHighlighter>
             )}
           </AccordionDetails>

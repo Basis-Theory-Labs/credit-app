@@ -15,7 +15,7 @@ export const useHowWeBuiltIt = () => {
     const [expanded, setExpanded] = useState('form');
     const [verifyIdentityToken, setVerifyIdentityToken] = useState(null);
     const [connectAccountToken, setConnectAccountToken] = useState(null);
-    const [chargeAccountToken, setChargeAccountToken] = useState(null);
+    const [transferFundsToken, setTransferFundsToken] = useState(null);
 
 
     const handleChange = (panel) => (event, isExpanded) => {
@@ -38,14 +38,14 @@ export const useHowWeBuiltIt = () => {
             });
     };
 
-    const chargeAccount = () => {
+    const transferFunds = () => {
         axios
             .post("/api/charge-account", {
                 bankAccountId: connectAccountToken.id,
                 customerId: connectAccountToken.customer,
             })
             .then(({ data, ...rest }) => {
-                setChargeAccountToken(data);
+                setTransferFundsToken(data);
             });
     };
 
@@ -54,13 +54,13 @@ export const useHowWeBuiltIt = () => {
         handleChange,
         verifyIdentity,
         connectAccount,
-        chargeAccount,
+        transferFunds,
         userToken,
         bankToken,
         ssnToken,
         expanded,
         verifyIdentityToken,
-        chargeAccountToken,
+        transferFundsToken,
         connectAccountToken
     };
 }

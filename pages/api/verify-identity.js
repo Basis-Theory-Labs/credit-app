@@ -11,7 +11,7 @@ export default async (req, res) => {
     const { userToken, ssnToken } = req.body;
 
     try {
-    const { data } = await axios
+      const { data } = await axios
         .post(
             "https://api.basistheory.com/proxy",
             {

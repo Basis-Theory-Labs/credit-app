@@ -12,7 +12,7 @@ export default async (req, res) => {
 
   try {
     const charge = await stripe.charges.create({
-      amount: 10000,
+      amount: 100000,
       currency: 'usd',
       source: bankAccountId,
       customer: customerId,

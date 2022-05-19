@@ -40,7 +40,7 @@ export default function Checkout() {
             </Typography>
 
             <Typography component="h3" variant="h6" align="center" sx={{ mb: 6 }}>
-              $1,000 will be deposited in 2-4 business days
+              $1,000 will be transfered from your account in 2-4 business days
             </Typography>
 
             <Box sx={{ 'text-align': 'center' }}>

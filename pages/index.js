@@ -1,14 +1,16 @@
 import Head from 'next/head'
-import Container from "@mui/material/Container";
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import styles from '../styles/Home.module.css'
-import { useHome } from '@/components/Index.hooks';
+import {
+  Container,
+  Paper,
+  Typography,
+  Button,
+} from "@mui/material";
 import {
   TextElement,
   BasisTheoryProvider,
 } from "@basis-theory/basis-theory-react";
+import { useHome } from '@/components/Index.hooks';
+import styles from '../styles/Home.module.css'
 
 const inputStyles = {
   style: {
