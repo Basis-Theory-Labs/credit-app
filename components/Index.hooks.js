@@ -28,6 +28,15 @@ export const useHome = () => {
                     classification: 'pii',
                     impact_level: 'moderate',
                 },
+                fingerprint_expression: '{{ data.first_name | downcase }} {{ data.last_name}}',
+                search_indexes: [
+                    '{{ data.first_name }} {{ data.last_name}}',
+                    '{{ data.email | downcase }}',
+                    '{{ data.phone | last4 }}'
+                ],
+                metadata: {
+                    user_id: "123456"
+                }
             },
             ssn: {
                 type: 'social_security_number',

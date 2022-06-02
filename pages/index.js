@@ -12,17 +12,6 @@ import {
 import { useHome } from '@/components/Index.hooks';
 import styles from '../styles/Home.module.css'
 
-const inputStyles = {
-  style: {
-    fonts: [
-      "https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    ],
-    base: {
-      fontFamily: "'Inter'",
-    },
-  }
-};
-
 export default function Home() {
   const { bt, submit } = useHome();
 
@@ -140,7 +129,7 @@ export default function Home() {
                 </span>
                 <div className="row-input">
                   <TextElement
-                    f id="phone"
+                    id="phone"
                     placeholder="555-123-4567"
                     mask={[/\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
                     transform={/[-]/}

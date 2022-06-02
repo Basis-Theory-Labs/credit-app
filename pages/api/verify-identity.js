@@ -15,15 +15,15 @@ export default async (req, res) => {
         .post(
             "https://api.basistheory.com/proxy",
             {
-                name_first: `{{ ${userToken} | $.first_name }}`,
-                name_last: `{{ ${userToken} | $.last_name }}`,
-                email_address: `{{ ${userToken} | $.email }}`,
-                phone_number: `{{ ${userToken} | $.phone }}`,
+                name_first: `{{ ${userToken} | json: '$.first_name' }}`,
+                name_last: `{{ ${userToken} | json: '$.last_name' }}`,
+                email_address: `{{ ${userToken} | json: '$.email' }}`,
+                phone_number: `{{ ${userToken} | json: '$.phone' }}`,
                 document_ssn: `{{ ${ssnToken} }}`,
-                address_line_1: `{{ ${userToken} | $.address.street }}`,
-                address_city: `{{ ${userToken} | $.address.city }}`,
-                address_state: `{{ ${userToken} | $.address.state }}`,
-                address_postal_code: `{{ ${userToken} | $.address.postal_code }}`,
+                address_line_1: `{{ ${userToken} | json: '$.address.street' }}`,
+                address_city: `{{ ${userToken} | json: '$.address.city' }}`,
+                address_state: `{{ ${userToken} | json: '$.address.state' }}`,
+                address_postal_code: `{{ ${userToken} | json: '$.address.postal_code' }}`,
             },
             {
                 headers: {
